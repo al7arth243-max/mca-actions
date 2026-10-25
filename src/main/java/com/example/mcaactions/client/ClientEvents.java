@@ -6,7 +6,7 @@ import com.example.mcaactions.net.ActionNetwork;
 import forge.net.mca.entity.VillagerEntityMCA;
 import com.google.gson.Gson;
 import com.mojang.logging.LogUtils;
-import import forge.net.mca.client.gui.AbstractDynamicScreen;
+import forge.net.mca.client.gui.AbstractDynamicScreen;
 import forge.net.mca.client.gui.Button;
 import forge.net.mca.client.gui.InteractScreen;
 import forge.net.mca.client.gui.MCAScreens;
