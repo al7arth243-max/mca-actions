@@ -30,6 +30,6 @@ side="BOTH"
 [[dependencies.mca_actions]]
 modId="mca"
 mandatory=true
-versionRange="[7.7,)"
+versionRange="[7.6,)"
 ordering="AFTER"
 side="BOTH"
