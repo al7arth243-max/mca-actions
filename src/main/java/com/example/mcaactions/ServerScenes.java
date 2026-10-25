@@ -3,7 +3,7 @@ package com.example.mcaactions;
 import com.example.mcaactions.net.ActionNetwork;
 import com.example.mcaactions.net.ApproachPacket;
 import com.example.mcaactions.net.SceneSyncPacket;
-import forge.net.conczin.mca.entity.VillagerEntityMCA;
+import forge.net.mca.entity.VillagerEntityMCA;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
