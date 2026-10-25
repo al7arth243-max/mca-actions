@@ -12,9 +12,9 @@ permissions:
   contents: write
 
 env:
-  # CurseForge file ID of the MCA Reborn 1.20.1 jar to compile against.
-  # Override it with a repository variable named MCA_FILE_ID (Settings > Secrets and variables > Actions > Variables).
-  MCA_FILE_ID: ${{ vars.MCA_FILE_ID || '6805928' }}
+  # Direct link to the MCA Reborn 1.20.1 jar to compile against (default: 7.6.11).
+  # Override it with a repository variable named MCA_JAR_URL (Settings > Secrets and variables > Actions > Variables).
+  MCA_JAR_URL: ${{ vars.MCA_JAR_URL || 'https://mediafilez.forgecdn.net/files/6805/928/minecraft-comes-alive-7.6.11%2B1.20.1-universal.jar' }}
 
 jobs:
   build:
@@ -32,15 +32,19 @@ jobs:
       - name: Download MCA Reborn
         run: |
           mkdir -p libs
-          curl -fsSL -A "Mozilla/5.0" -o libs/mca-7.7.1.jar \
-            "https://www.curseforge.com/api/v1/mods/535291/files/${MCA_FILE_ID}/download"
-          unzip -tq libs/mca-7.7.1.jar > /dev/null || { echo "::error::Downloaded MCA file is not a valid jar"; exit 1; }
+          code=$(curl -sSL -A "Mozilla/5.0" -o libs/mca-7.7.1.jar -w "%{http_code}" "$MCA_JAR_URL")
+          echo "HTTP status: $code"
+          if [ "$code" != "200" ] || ! unzip -tq libs/mca-7.7.1.jar > /dev/null; then
+            echo "::error::Could not download a valid MCA jar from $MCA_JAR_URL (HTTP $code)"
+            head -c 300 libs/mca-7.7.1.jar; echo
+            exit 1
+          fi
           ls -l libs
 
       - name: Build
         run: |
           chmod +x gradlew
-          ./gradlew build --no-daemon
+          ./gradlew build --no-daemon --stacktrace
 
       - name: Upload jar
         uses: actions/upload-artifact@v4
