@@ -3,7 +3,7 @@ package com.example.mcaactions.client;
 import com.example.mcaactions.ActionType;
 import com.example.mcaactions.McaActions;
 import com.example.mcaactions.net.ActionNetwork;
-import com.example.mcaactions.net.PerformActionPacket;
+import forge.net.mca.entity.VillagerEntityMCA;
 import com.google.gson.Gson;
 import com.mojang.logging.LogUtils;
 import forge.net.conczin.mca.client.gui.AbstractDynamicScreen;
