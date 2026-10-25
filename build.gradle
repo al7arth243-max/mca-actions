@@ -32,16 +32,20 @@ mixin {
 }
 
 repositories {
-    flatDir { dir 'libs' }
     maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+    // CurseMaven serves CurseForge files as Maven dependencies
+    maven {
+        url 'https://cursemaven.com'
+        content { includeGroup 'curse.maven' }
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    // Put the MCA jar at libs/mca-7.7.1.jar
-    compileOnly fg.deobf(':mca:7.7.1')
-    runtimeOnly fg.deobf(':mca:7.7.1')
+    // MCA Reborn for 1.20.1 from CurseForge (project 535291, file 6805928 = MCA 7.6.11)
+    compileOnly fg.deobf('curse.maven:minecraft-comes-alive-reborn-535291:6805928')
+    runtimeOnly fg.deobf('curse.maven:minecraft-comes-alive-reborn-535291:6805928')
 }
 
 tasks.named('processResources') {
