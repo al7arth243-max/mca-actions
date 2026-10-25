@@ -1,0 +1,55 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+env:
+  # CurseForge file ID of the MCA Reborn 1.20.1 jar to compile against.
+  # Override it with a repository variable named MCA_FILE_ID (Settings > Secrets and variables > Actions > Variables).
+  MCA_FILE_ID: ${{ vars.MCA_FILE_ID || '6805928' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Download MCA Reborn
+        run: |
+          mkdir -p libs
+          curl -fsSL -A "Mozilla/5.0" -o libs/mca-7.7.1.jar \
+            "https://www.curseforge.com/api/v1/mods/535291/files/${MCA_FILE_ID}/download"
+          unzip -tq libs/mca-7.7.1.jar > /dev/null || { echo "::error::Downloaded MCA file is not a valid jar"; exit 1; }
+          ls -l libs
+
+      - name: Build
+        run: |
+          chmod +x gradlew
+          ./gradlew build --no-daemon
+
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: mca_actions
+          path: build/libs/*.jar
+
+      - name: Attach jar to release
+        if: github.event_name == 'release'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" build/libs/*.jar --clobber
