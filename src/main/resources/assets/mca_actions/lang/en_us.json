@@ -1,0 +1,9 @@
+{
+  "gui.button.mca_actions.open": "Actions",
+  "gui.button.mca_actions.hug": "Hug",
+  "gui.button.mca_actions.cuddle": "Cuddle in bed",
+  "mca_actions.leave": "Leave",
+  "mca_actions.switch": "Switch",
+  "mca_actions.message.no_double_bed": "No free bed nearby (a double bed works best).",
+  "mca_actions.message.cant_reach": "They couldn't reach each other."
+}
