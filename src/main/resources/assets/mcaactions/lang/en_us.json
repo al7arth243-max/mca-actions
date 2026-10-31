@@ -1,0 +1,18 @@
+{
+  "gui.button.mcaactions.actions": "Actions",
+  "gui.button.mcaactions.do.hug": "Hug",
+  "gui.button.mcaactions.do.cuddle": "Cuddle in bed",
+  "gui.button.mcaactions.stop": "Stop",
+  "gui.mcaactions.stop_title": "Cuddling",
+  "gui.mcaactions.stop_hint": "Press Shift or click Stop to get up",
+
+  "message.mcaactions.busy": "%s is busy right now",
+  "message.mcaactions.too_far": "Get closer to %s first",
+  "message.mcaactions.not_adult": "%s isn't old enough for that",
+  "message.mcaactions.no_bed": "No free double bed nearby (place two beds side by side)",
+  "message.mcaactions.hug.done": "You hugged %s (+%s hearts)",
+  "message.mcaactions.hug.again": "You hugged %s again",
+  "message.mcaactions.cuddle.start": "You and %s cuddle up. Press Shift or click Stop to get up",
+  "message.mcaactions.cuddle.hearts": "%s snuggles closer (+%s heart)",
+  "message.mcaactions.cuddle.end": "You got up after cuddling with %s"
+}

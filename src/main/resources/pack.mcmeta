@@ -1,1 +1,6 @@
-{ "pack": { "description": "MCA Actions resources", "pack_format": 15 } }
+{
+  "pack": {
+    "description": "MCA Actions resources",
+    "pack_format": 15
+  }
+}

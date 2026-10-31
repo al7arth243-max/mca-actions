@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mcaactions.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "MCAScreensMixin",
+    "InteractScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

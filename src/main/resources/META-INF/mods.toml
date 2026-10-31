@@ -1,35 +1,40 @@
 modLoader="javafml"
 loaderVersion="[47,)"
-license="MIT"
+license="GPL-3.0"
 
 [[mods]]
-modId="mca_actions"
-version="${file.jarVersion}"
+modId="mcaactions"
+version="1.0.0"
 displayName="MCA Actions"
+authors="worthyjoker"
 description='''
-Adds an "Actions" menu to Minecraft Comes Alive villagers: slice-of-life poses and animations.
+Adds an "Actions" menu to MCA Reborn villagers: hug them, or cuddle together in a double bed.
 '''
 
-[[mixins]]
-config="mca_actions.mixins.json"
+[[dependencies.mcaactions]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
 
-[[dependencies.mca_actions]]
-modId="forge"
-mandatory=true
-versionRange="[47,)"
-ordering="NONE"
-side="BOTH"
+[[dependencies.mcaactions]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.20.2)"
+    ordering="NONE"
+    side="BOTH"
 
-[[dependencies.mca_actions]]
-modId="minecraft"
-mandatory=true
-versionRange="[1.20.1,1.21)"
-ordering="NONE"
-side="BOTH"
+[[dependencies.mcaactions]]
+    modId="mca"
+    mandatory=true
+    versionRange="[7.7,7.8)"
+    ordering="AFTER"
+    side="BOTH"
 
-[[dependencies.mca_actions]]
-modId="mca"
-mandatory=true
-versionRange="[7.6,)"
-ordering="AFTER"
-side="BOTH"
+[[dependencies.mcaactions]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[4.4,4.5)"
+    ordering="AFTER"
+    side="BOTH"
